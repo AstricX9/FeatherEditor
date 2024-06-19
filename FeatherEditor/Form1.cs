@@ -164,5 +164,10 @@ namespace FeatherEditor
             About aboutForm = new About();
             aboutForm.Show();
         }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
