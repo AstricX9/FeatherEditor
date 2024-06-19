@@ -2,6 +2,6 @@
 
 
 
-![About.PNG](G:\Dev\FeatherEditor\Images\About.PNG)
+![About.PNG](./Images/About.PNG)
 
 @
