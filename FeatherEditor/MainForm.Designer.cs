@@ -41,6 +41,8 @@
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.runToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.runHTMLPreviewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutFeatherToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.whatsNewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -52,9 +54,6 @@
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.pasteHTML5ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.projectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.runToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.runHTMLPreviewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.darkMenuStrip1.SuspendLayout();
             this.rightmenuClick.SuspendLayout();
             this.SuspendLayout();
@@ -97,8 +96,7 @@
             this.newToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.newToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.newToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.windowsToolStripMenuItem,
-            this.projectToolStripMenuItem});
+            this.windowsToolStripMenuItem});
             this.newToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
             this.newToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
@@ -189,6 +187,25 @@
             this.viewToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.viewToolStripMenuItem.Text = "View";
             // 
+            // runToolStripMenuItem
+            // 
+            this.runToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.runToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.runHTMLPreviewToolStripMenuItem});
+            this.runToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.runToolStripMenuItem.Name = "runToolStripMenuItem";
+            this.runToolStripMenuItem.Size = new System.Drawing.Size(40, 20);
+            this.runToolStripMenuItem.Text = "Run";
+            // 
+            // runHTMLPreviewToolStripMenuItem
+            // 
+            this.runHTMLPreviewToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.runHTMLPreviewToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.runHTMLPreviewToolStripMenuItem.Name = "runHTMLPreviewToolStripMenuItem";
+            this.runHTMLPreviewToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
+            this.runHTMLPreviewToolStripMenuItem.Text = "Run HTML Preview";
+            this.runHTMLPreviewToolStripMenuItem.Click += new System.EventHandler(this.runHTMLPreviewToolStripMenuItem_Click);
+            // 
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
@@ -205,7 +222,7 @@
             this.aboutFeatherToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.aboutFeatherToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.aboutFeatherToolStripMenuItem.Name = "aboutFeatherToolStripMenuItem";
-            this.aboutFeatherToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.aboutFeatherToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.aboutFeatherToolStripMenuItem.Text = "About Feather";
             this.aboutFeatherToolStripMenuItem.Click += new System.EventHandler(this.aboutFeatherToolStripMenuItem_Click);
             // 
@@ -214,7 +231,7 @@
             this.whatsNewToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.whatsNewToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.whatsNewToolStripMenuItem.Name = "whatsNewToolStripMenuItem";
-            this.whatsNewToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.whatsNewToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.whatsNewToolStripMenuItem.Text = "Whats New?";
             this.whatsNewToolStripMenuItem.Click += new System.EventHandler(this.whatsNewToolStripMenuItem_Click);
             // 
@@ -291,34 +308,6 @@
             this.pasteHTML5ToolStripMenuItem.Text = "Paste HTML5";
             this.pasteHTML5ToolStripMenuItem.Click += new System.EventHandler(this.pasteHTML5ToolStripMenuItem_Click);
             // 
-            // projectToolStripMenuItem
-            // 
-            this.projectToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.projectToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.projectToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.projectToolStripMenuItem.Name = "projectToolStripMenuItem";
-            this.projectToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.projectToolStripMenuItem.Text = "Project";
-            // 
-            // runToolStripMenuItem
-            // 
-            this.runToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.runToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.runHTMLPreviewToolStripMenuItem});
-            this.runToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.runToolStripMenuItem.Name = "runToolStripMenuItem";
-            this.runToolStripMenuItem.Size = new System.Drawing.Size(40, 20);
-            this.runToolStripMenuItem.Text = "Run";
-            // 
-            // runHTMLPreviewToolStripMenuItem
-            // 
-            this.runHTMLPreviewToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.runHTMLPreviewToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.runHTMLPreviewToolStripMenuItem.Name = "runHTMLPreviewToolStripMenuItem";
-            this.runHTMLPreviewToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.runHTMLPreviewToolStripMenuItem.Text = "Run HTML Preview";
-            this.runHTMLPreviewToolStripMenuItem.Click += new System.EventHandler(this.runHTMLPreviewToolStripMenuItem_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -364,7 +353,6 @@
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.ToolStripMenuItem aboutFeatherToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem whatsNewToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem projectToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem runToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem runHTMLPreviewToolStripMenuItem;
     }

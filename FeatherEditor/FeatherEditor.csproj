@@ -90,6 +90,12 @@
     <Compile Include="Forms\About.Designer.cs">
       <DependentUpon>About.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\NewProject.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\NewProject.Designer.cs">
+      <DependentUpon>NewProject.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Preview.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -112,6 +118,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\About.resx">
       <DependentUpon>About.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\NewProject.resx">
+      <DependentUpon>NewProject.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Preview.resx">
       <DependentUpon>Preview.cs</DependentUpon>

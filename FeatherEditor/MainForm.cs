@@ -220,5 +220,16 @@ namespace FeatherEditor
             webViewForm.LoadContent(editor.Text);
             webViewForm.Show();
         }
+
+        private void projectToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            NewProject npForm = new NewProject();
+            npForm.Show();
+        }
+
+        public void OpenProject(string projectFolderPath)
+        {
+            this.Show();
+        }
     }
 }
