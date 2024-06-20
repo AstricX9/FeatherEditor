@@ -11,13 +11,14 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DarkUI;
 using DarkUI.Forms;
+using FeatherEditor.Forms;
 using WinFormsSyntaxHighlighter;
 
 namespace FeatherEditor
 {
-    public partial class Form1 : DarkForm
+    public partial class MainForm : DarkForm
     {
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
             var syntaxHighlighter = new SyntaxHighlighter(editor);
@@ -40,9 +41,12 @@ namespace FeatherEditor
             // operators
             syntaxHighlighter.AddPattern(new PatternDefinition("+", "-", ">", "<", "&", "|"), new SyntaxStyle(Color.Brown));
 
+    }
 
-        }
-
+        private string currentFilePath;
+        private string htmlContent;
+        private string cssContent;
+        private string jsContent;
 
         private void cutToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -61,7 +65,7 @@ namespace FeatherEditor
 
         private void pasteHTML5ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string htmlFilePath = Path.Combine(Application.StartupPath, "template.html");
+            string htmlFilePath = Path.Combine(Application.StartupPath, "./Boilertemplates/template.html");
 
 
             try
@@ -80,7 +84,7 @@ namespace FeatherEditor
 
         private void windowsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form1 newForm = new Form1();
+            MainForm newForm = new MainForm();
             newForm.Show();
         }
 
@@ -97,25 +101,13 @@ namespace FeatherEditor
                 {
                     try
                     {
-                        string fileName = openFileDialog.FileName;
+                        currentFilePath = openFileDialog.FileName;
 
-                        // Check if the selected file is a .fethr file
-                        string ext = Path.GetExtension(fileName).ToLower();
-                        if (ext == ".fethr")
-                        {
-                            // Read the content of the file
-                            string fileContent = File.ReadAllText(fileName);
+                        // Read the content of the file
+                        string fileContent = File.ReadAllText(currentFilePath);
 
-                            // Display the content in RichTextBox
-                            editor.Text = fileContent;
-                        }
-                        else
-                        {
-                            // Handle other file types
-                            // For simplicity, you can use the existing code to handle other file types
-                            string fileContent = File.ReadAllText(fileName);
-                            editor.Text = fileContent;
-                        }
+                        // Display the content in RichTextBox
+                        editor.Text = fileContent;
                     }
                     catch (Exception ex)
                     {
@@ -139,13 +131,11 @@ namespace FeatherEditor
                 {
                     try
                     {
-                        string fileName = saveFileDialog.FileName;
+                        currentFilePath = saveFileDialog.FileName;
 
                         // Write content to the file in the custom format
-                        using (StreamWriter writer = new StreamWriter(fileName, false, Encoding.UTF8))
+                        using (StreamWriter writer = new StreamWriter(currentFilePath, false, System.Text.Encoding.UTF8))
                         {
-                            // Write your custom format here
-                            // For example, you can write the content of the RichTextBox
                             writer.Write(editor.Text);
                         }
 
@@ -168,6 +158,67 @@ namespace FeatherEditor
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void whatsNewToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Whats_New wnForm = new Whats_New();
+            wnForm.Show();
+        }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(currentFilePath))
+            {
+                SaveAs();
+            }
+            else
+            {
+                SaveFile(currentFilePath);
+            }
+        }
+
+        private void SaveAs()
+        {
+            using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+            {
+                saveFileDialog.DefaultExt = "fethr";
+                saveFileDialog.Filter = "Feather Files (*.fethr)|*.fethr|All files (*.*)|*.*";
+                saveFileDialog.FilterIndex = 1;
+                saveFileDialog.RestoreDirectory = true;
+
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    currentFilePath = saveFileDialog.FileName;
+                    SaveFile(currentFilePath);
+                }
+            }
+        }
+
+        private void SaveFile(string filePath)
+        {
+            try
+            {
+                using (StreamWriter writer = new StreamWriter(filePath, false, System.Text.Encoding.UTF8))
+                {
+                    writer.Write(editor.Text);
+                }
+
+                MessageBox.Show("File saved successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void runHTMLPreviewToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Open a new form with WebView2 control
+            Preview webViewForm = new Preview();
+            // Load content from the RichTextBox into the WebView2 control
+            webViewForm.LoadContent(editor.Text);
+            webViewForm.Show();
         }
     }
 }
