@@ -25,23 +25,55 @@ namespace FeatherEditor
 
             // -------- HTML --------
             // multi-line comments
-            syntaxHighlighter.AddPattern(new PatternDefinition(new Regex(@"/\*(.|[\r\n])*?\*/", RegexOptions.Multiline | RegexOptions.Compiled)), new SyntaxStyle(Color.DarkSeaGreen, false, true));
-            // single-line comments
-            syntaxHighlighter.AddPattern(new PatternDefinition(new Regex(@"//.*?$", RegexOptions.Multiline | RegexOptions.Compiled)), new SyntaxStyle(Color.Green, false, true));
-            // numbers
-            syntaxHighlighter.AddPattern(new PatternDefinition(@"\d+\.\d+|\d+"), new SyntaxStyle(Color.Purple));
-            // double quote strings
-            syntaxHighlighter.AddPattern(new PatternDefinition(@"\""([^""]|\""\"")+\"""), new SyntaxStyle(Color.Red));
-            // single quote strings
-            syntaxHighlighter.AddPattern(new PatternDefinition(@"\'([^']|\'\')+\'"), new SyntaxStyle(Color.Salmon));
-            // HTML tags
-            syntaxHighlighter.AddPattern(new PatternDefinition("html", "body", "div", "span", "div", "button", "img", "image", "h1", "h2", "h3", "h4"), new SyntaxStyle(Color.Blue));
-            // HTML attributes
-            syntaxHighlighter.AddPattern(new CaseInsensitivePatternDefinition("class", "id", "style", "href"), new SyntaxStyle(Color.Navy, true, false));
-            // operators
-            syntaxHighlighter.AddPattern(new PatternDefinition("+", "-", ">", "<", "&", "|"), new SyntaxStyle(Color.Brown));
+            syntaxHighlighter.AddPattern(new PatternDefinition(new Regex(@"/\*(.|[\r\n])*?\*/", RegexOptions.Multiline | RegexOptions.Compiled)), new SyntaxStyle(Color.FromArgb(117, 113, 94), false, true)); //  brownish-grey for comments
 
-    }
+            // single-line comments
+            syntaxHighlighter.AddPattern(new PatternDefinition(new Regex(@"//.*?$", RegexOptions.Multiline | RegexOptions.Compiled)), new SyntaxStyle(Color.FromArgb(117, 113, 94), false, true)); // Same brownish-grey as multi-line comments
+
+            // numbers
+            syntaxHighlighter.AddPattern(new PatternDefinition(@"\d+\.\d+|\d+"), new SyntaxStyle(Color.FromArgb(174, 129, 255))); // shade of purple for numbers
+
+            // double quote strings
+            syntaxHighlighter.AddPattern(new PatternDefinition(@"\""([^""]|\""\"")+\"""), new SyntaxStyle(Color.FromArgb(230, 219, 116))); //  yellow color for strings
+
+            // single quote strings
+            syntaxHighlighter.AddPattern(new PatternDefinition(@"\'([^']|\'\')+\'"), new SyntaxStyle(Color.FromArgb(230, 219, 116))); // Same yellow as double quote strings
+
+            // HTML tags
+            syntaxHighlighter.AddPattern(new PatternDefinition(
+                "a", "abbr", "acronym", "address", "applet", "area", "article", "aside", "audio",
+                "b", "base", "basefont", "bdi", "bdo", "big", "blockquote", "body", "br", "button",
+                "canvas", "caption", "center", "cite", "code", "col", "colgroup", "data", "datalist",
+                "dd", "del", "details", "dfn", "dialog", "dir", "div", "dl", "dt", "em", "embed",
+                "fieldset", "figcaption", "figure", "font", "footer", "form", "frame", "frameset",
+                "h1", "h2", "h3", "h4", "h5", "h6", "head", "header", "hr", "html",
+                "i", "iframe", "img", "input", "ins", "kbd", "label", "legend", "li", "link",
+                "main", "map", "mark", "meta", "meter", "nav", "noframes", "noscript", "object",
+                "ol", "optgroup", "option", "output", "p", "param", "picture", "pre", "progress",
+                "q", "rp", "rt", "ruby",
+                "s", "samp", "script", "section", "select", "small", "source", "span", "strike", "strong", "style", "sub", "summary", "sup", "svg",
+                "table", "tbody", "td", "template", "textarea", "tfoot", "th", "thead", "time", "title", "tr", "track", "tt",
+                "u", "ul",
+                "var", "video",
+                "wbr"
+            ), new SyntaxStyle(Color.FromArgb(249, 38, 114))); //  red for HTML tags
+
+            // HTML attributes (excluding href)
+            syntaxHighlighter.AddPattern(new CaseInsensitivePatternDefinition("class", "id", "style"), new SyntaxStyle(Color.FromArgb(102, 217, 239), true, false)); // cyan for attributes
+
+            // href attribute
+            syntaxHighlighter.AddPattern(new CaseInsensitivePatternDefinition("href"), new SyntaxStyle(Color.FromArgb(166, 226, 46), true, false)); //  green for href
+
+            // paths/stylesheet references
+            syntaxHighlighter.AddPattern(new PatternDefinition(@"\.\/[\w\/]*\.\w+"), new SyntaxStyle(Color.FromArgb(230, 219, 116))); // yellow for paths/stylesheet references
+
+            // operators
+            syntaxHighlighter.AddPattern(new PatternDefinition("+", "-", ">", "<", "&", "|"), new SyntaxStyle(Color.FromArgb(192, 192, 192))); // silver for operators
+
+
+
+
+        }
 
         private string currentFilePath;
         private string htmlContent;
