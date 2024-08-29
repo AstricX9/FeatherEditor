@@ -149,6 +149,20 @@ namespace FeatherEditor
             }
         }
 
+        private string GetFileContent(string filePath)
+        {
+            try
+            {
+                return File.ReadAllText(filePath);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error reading file {filePath}: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return string.Empty;
+            }
+        }
+
+
         private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             using (SaveFileDialog saveFileDialog = new SaveFileDialog())
@@ -248,10 +262,28 @@ namespace FeatherEditor
         {
             // Open a new form with WebView2 control
             Preview webViewForm = new Preview();
-            // Load content from the RichTextBox into the WebView2 control
-            webViewForm.LoadContent(editor.Text);
+
+            // Combine the CSS and JS content with the HTML content
+            string combinedHtml = editor.Text;
+
+            // Inject CSS
+            if (!string.IsNullOrEmpty(cssContent))
+            {
+                combinedHtml = Regex.Replace(combinedHtml, @"<head>", $"<head>{Environment.NewLine}<style>{cssContent}</style>");
+            }
+
+            // Inject JS
+            if (!string.IsNullOrEmpty(jsContent))
+            {
+                combinedHtml = Regex.Replace(combinedHtml, @"</body>", $"{Environment.NewLine}<script>{jsContent}</script></body>");
+            }
+
+            // Load content into the WebView2 control
+            webViewForm.LoadContent(combinedHtml);
             webViewForm.Show();
         }
+
+
 
         private void projectToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -262,6 +294,17 @@ namespace FeatherEditor
         public void OpenProject(string projectFolderPath)
         {
             this.Show();
+
+            // Scan for .css and .js files in the project folder
+            var cssFiles = Directory.GetFiles(projectFolderPath, "*.css", SearchOption.AllDirectories);
+            var jsFiles = Directory.GetFiles(projectFolderPath, "*.js", SearchOption.AllDirectories);
+
+            // Combine the content of all CSS and JS files
+            cssContent = string.Join(Environment.NewLine, cssFiles.Select(GetFileContent));
+            jsContent = string.Join(Environment.NewLine, jsFiles.Select(GetFileContent));
+
+            // Optionally, you might want to process the HTML content to inject the CSS and JS references
         }
+
     }
 }

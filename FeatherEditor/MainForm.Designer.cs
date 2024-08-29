@@ -202,8 +202,8 @@
             this.runHTMLPreviewToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.runHTMLPreviewToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.runHTMLPreviewToolStripMenuItem.Name = "runHTMLPreviewToolStripMenuItem";
-            this.runHTMLPreviewToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
-            this.runHTMLPreviewToolStripMenuItem.Text = "Run HTML Preview";
+            this.runHTMLPreviewToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
+            this.runHTMLPreviewToolStripMenuItem.Text = "Run HTML Preview (WIP)";
             this.runHTMLPreviewToolStripMenuItem.Click += new System.EventHandler(this.runHTMLPreviewToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
