@@ -101,7 +101,7 @@
             this.darkLabel4.Name = "darkLabel4";
             this.darkLabel4.Size = new System.Drawing.Size(162, 16);
             this.darkLabel4.TabIndex = 5;
-            this.darkLabel4.Text = "SourceEditor by d-dmitry1";
+            this.darkLabel4.Text = "SourceEditor by b-dmitry1";
             // 
             // About
             // 

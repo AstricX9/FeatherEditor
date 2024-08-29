@@ -1,5 +1,54 @@
 ﻿body {
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    background: #3c3f41;
-    color: white;
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #1e1e1e;
+    color: #dcdcdc;
 }
+
+.main-content {
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.update-card {
+    display: flex;
+    align-items: center;
+    background-color: #2d2d30;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.update-image {
+    width: 40%;
+    height: auto;
+    object-fit: cover;
+}
+
+.update-info {
+    padding: 20px;
+    width: 60%;
+}
+
+    .update-info h2 {
+        margin: 0;
+        font-size: 22px;
+        margin-bottom: 10px;
+        color: #569cd6;
+    }
+
+    .update-info p {
+        margin: 5px 0;
+        color: #dcdcdc;
+    }
+
+    .update-info ul {
+        list-style: disc;
+        padding-left: 20px;
+    }
+
+        .update-info ul li {
+            margin-bottom: 5px;
+        }
